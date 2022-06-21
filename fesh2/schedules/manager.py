@@ -169,8 +169,8 @@ def send_warning_new_sched(backup_f, current_f, new_f, config, ses):
     be used. To drudg the new file by hand:
         mv file.skd.new file.skd
         drudg file.skd
-    Or force fesh3 to update the schedules with the following command:
-        fesh3 --update --once --DoDrudg -g <session_name>
+    Or force fesh2 to update the schedules with the following command:
+        fesh2 --update --once --DoDrudg -g <session_name>
     where <session_name> is the code for the session to be updated (e.g. r4951)
 
     The backed-up original file is called backup_f
@@ -193,9 +193,9 @@ be used. To drudg the new file by hand:
         mv {} {}
         drudg {}
 
-Or force fesh3 to update the schedules with the following command:
+Or force fesh2 to update the schedules with the following command:
 
-    fesh3 --update --once --DoDrudg -g {}
+    fesh2 --update --once --DoDrudg -g {}
 
 where <session_name> is the code for the session to be updated (e.g. r4951)
 
@@ -229,11 +229,11 @@ The backed-up original file is called {}""".format(
     </code>
             </blockquote>
 
-    Or force fesh3 to update the schedules with the following command:
+    Or force fesh2 to update the schedules with the following command:
                 <br>
                 <blockquote>
     <code>
-        fesh3 --update --once --DoDrudg -g {};
+        fesh2 --update --once --DoDrudg -g {};
     </code>
             </blockquote>
     <br>
@@ -241,7 +241,7 @@ The backed-up original file is called {}""".format(
     The backed-up original file is called <code>{}</code>
             <br><br>
             <hr>
-            This message was automatically generated and sent by fesh3
+            This message was automatically generated and sent by fesh2
             </p>
 
         </body>

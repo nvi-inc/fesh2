@@ -9,11 +9,11 @@ first, but skipped if the time since the last check is less than a specified amo
 on the command line or in the config file). Similarly, checks on schedule files are only done if
 the time since the last check exceeds a specified time. If new or updated schedules are found,
 they are optionally processed with *Drudg* to produce `snp`, `prc` and `lst` files. By default,
-once the files have been checked, fesh3 will provide a summary and then go into a wait state
+once the files have been checked, fesh2 will provide a summary and then go into a wait state
 before carrying out another check. Fesh2 can also be run once for a single check or status
 report and not go into a wait state. Multiple instances can be run simultaneously. If drudg
 output (`snp` or `prc ` files) have been modified by the user and a new schedule becomes
-available , fesh3 will download the file but not overwrite Drudg output, but it will warn the
+available , fesh2 will download the file but not overwrite Drudg output, but it will warn the
 user.
 
 Fesh2 can be run as a foreground application or as a service in the background.
@@ -95,7 +95,7 @@ def main():
     quiet = config.quiet or config.monit
     FeshLog(
         config.LogDir,
-        "fesh3.log",
+        "fesh2.log",
         quiet=quiet,
         level=level,
     )
@@ -349,8 +349,8 @@ def main_task(config: Config) -> bool:
         config.check = True
 
     """
-    Lock out other fesh3 instances from manipulating files. 
-    Wait here until the lock file is unlocked so multiple instances of fesh3 don't
+    Lock out other fesh2 instances from manipulating files. 
+    Wait here until the lock file is unlocked so multiple instances of fesh2 don't
     attempt to drudg files at the same time. Go ahead though if config.check or 
     config.monit are set because they don't change local files.
     """
@@ -451,7 +451,7 @@ def main_task(config: Config) -> bool:
     )
     if not config.check:
         # We'll append the lock file with sched_check_text. This can be read by this or other
-        # fesh3 processes to find out when the last schedule file check was done
+        # fesh2 processes to find out when the last schedule file check was done
         # get the current level
         lock.lock_fh.write(sched_check_text)
         lock.lock_fh.flush()
@@ -612,13 +612,13 @@ def show_summary(
     # If a monit interface has been requested (config.monit=True), then we want to populate the
     # Dictionary config.tui_data with text for the Text User Interface (TUI)
 
-    # Check if fesh3 is running elsewhere, as a service or in a terminal
+    # Check if fesh2 is running elsewhere, as a service or in a terminal
     my_pid = os.getpid()
     processes_running = {}
     for p in process_iter():
-        # make a list of running fesh3 processes
-        # if ("fesh3" in p.name() or "python3" in p.name()) and p.pid != my_pid:
-        if "fesh3" in p.name() and p.pid != my_pid:
+        # make a list of running fesh2 processes
+        # if ("fesh2" in p.name() or "python3" in p.name()) and p.pid != my_pid:
+        if "fesh2" in p.name() and p.pid != my_pid:
             processes_running[p.pid] = p
 
     lproc = len(processes_running)
@@ -626,15 +626,15 @@ def show_summary(
     config.tui_data["processes_list"] = ""
 
     if lproc == 0:
-        txt = "There are no fesh3 processes currently running."
+        txt = "There are no fesh2 processes currently running."
         logger.warning(Colour.RED + txt + Colour.END)
         config.tui_data["processes"] = txt
         config.tui_data["processes_warning"] = True
     else:
         if lproc == 1:
-            txt = "There is currently one fesh3 process running"
+            txt = "There is currently one fesh2 process running"
         else:
-            txt = "There are currently {} fesh3 processes running".format(lproc)
+            txt = "There are currently {} fesh2 processes running".format(lproc)
             config.tui_data["processes_list"] = "{}:\n".format(txt)
         logger.info(txt)
         config.tui_data["processes"] = txt
@@ -801,9 +801,9 @@ def show_summary(
         logger.info("        mv <session_code>.skd.new <session_code>.skd")
         logger.info("        drudg <session_code>.skd")
         logger.info(
-            "    Or force fesh3 to update the schedules with the following command:"
+            "    Or force fesh2 to update the schedules with the following command:"
         )
-        logger.info("        fesh3 --update --once --DoDrudg -g <session_code>")
+        logger.info("        fesh2 --update --once --DoDrudg -g <session_code>")
         logger.info(
             "    where <session_code> is the code for the session to be updated (e.g. r4951)"
         )

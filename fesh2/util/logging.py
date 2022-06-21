@@ -91,7 +91,7 @@ class FeshLog:
                 },
             },
             "loggers": {
-                "fesh3": {  # The name of the logger, this SHOULD match your module!
+                "fesh2": {  # The name of the logger, this SHOULD match your module!
                     "level": level,
                     "handlers": [
                         "verbose_output",  # Refer the handler defined above

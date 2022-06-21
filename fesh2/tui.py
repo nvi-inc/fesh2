@@ -277,7 +277,7 @@ class FeshTUI:
         """
         Given session schedule status info, returns a dict containing urwid AttrMaps
         to be displayed (an urwid row per session)
-        config = fesh3 config parameters defines in FeshConfig
+        config = fesh2 config parameters defines in FeshConfig
         """
         if self.config.tui_data["sessions"]:
             for i, sess in enumerate(self.config.tui_data["sessions"]):
@@ -496,10 +496,10 @@ used. To drudg the new file by hand:
       mv <session_code>.skd.new <session_code>.skd
       drudg <session_code>.skd
   
-Or force fesh3 to update the schedules with the following 
+Or force fesh2 to update the schedules with the following 
 command:
 
-      fesh3 --update --once --DoDrudg -g <session_code>
+      fesh2 --update --once --DoDrudg -g <session_code>
 
 where <session_code> is the code for the session to be 
 updated (e.g. r4951). The backed-up original file is called 
@@ -509,13 +509,13 @@ updated (e.g. r4951). The backed-up original file is called
     def _get_HowToStartFesh_text(self):
         return """
 Fesh2 is not currently running so no schedule 
-checks or processing will be done. To start fesh3, simply 
+checks or processing will be done. To start fesh2, simply 
 type this in a terminal window:
 
-    fesh3
+    fesh2
 
 See the documentation for more information on 
-command-line options and running fesh3 as a service.    
+command-line options and running fesh2 as a service.    
         """
 
 

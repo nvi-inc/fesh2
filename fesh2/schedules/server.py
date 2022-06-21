@@ -326,7 +326,7 @@ class SchedServer(object):
                 logger.warning(
                     "This may be caused by a known problem that affects recent Debian linux distributions"
                 )
-                logger.warning("Try adding CurlSecLevel1 to fesh3.config")
+                logger.warning("Try adding CurlSecLevel1 to fesh2.config")
                 file_time = 0
             elif status == 28:
                 logger.warning("Failed to get file from server due to timeout.")

@@ -52,7 +52,7 @@ class Config:
         self.ProcDir = "/usr2/proc"
         self.SchedDir = "/usr2/sched"
         # ------------------------------------------------------------------------------------------
-        # parameters found in fesh3.config:
+        # parameters found in fesh2.config:
         # FS --------------------------------------
         self.LogDir = "/usr2/log"
         # Station ---------------------------------
@@ -166,7 +166,7 @@ class Config:
         if args.SchedDir:
             self.SchedDir = args.SchedDir.rstrip("/")
         # ------------------------------------------------------------------------------------------
-        # parameters found in fesh3.config:
+        # parameters found in fesh2.config:
         # FS --------------------------------------
         if args.LogDir:
             self.LogDir = args.LogDir.rstrip("/")
@@ -386,7 +386,7 @@ class Args:
     def __init__(
         self,
         default_config_file_skedf="/usr2/control/skedf.ctl",
-        default_config_file_fesh="/usr2/control/fesh3.config",
+        default_config_file_fesh="/usr2/control/fesh2.config",
     ):
         """Set up command-line parameters"""
 
@@ -400,7 +400,7 @@ class Args:
         # Now process the arguments for real.
 
         # first we want to check the command-line params to see if the locations of the skedf and
-        # fesh3 config files are correct
+        # fesh2 config files are correct
         parser_cfg_file_check = configargparse.ArgParser()
         self.add_skedf_args(
             parser_cfg_file_check, default_config_file_skedf, default_config_file_fesh
@@ -431,7 +431,7 @@ class Args:
             msg = (
                 "\nFesh2 requires that $schedules is defined in skedf.ctl.\n"
                 "The default of '.' (i.e. the directory the software is\n"
-                "started in) is too arbitrary and could cause fesh3 to\n"
+                "started in) is too arbitrary and could cause fesh2 to\n"
                 "lose track of files. Fesh2 will not execute unless $schedules\n"
                 "is defined. Exiting.\n"
             )
@@ -482,7 +482,7 @@ class Args:
             "--ConfigFile",
             is_config_file=True,
             default=default_config_file_fesh,
-            help="The fesh3 configuration file to use. e.g. /usr2/control/fesh3.config",
+            help="The fesh2 configuration file to use. e.g. /usr2/control/fesh2.config",
         )
         parser_cfg_file_check.add_argument(
             "-k",
@@ -609,7 +609,7 @@ class Args:
             const=True,
             default=False,
             nargs="?",
-            help="Send notifications by email. The fesh3 config file will be read for details on "
+            help="Send notifications by email. The fesh2 config file will be read for details on "
             "mail server, recipients etc",
         )
 
@@ -786,7 +786,7 @@ class Args:
             "-e",
             "--check",
             action="store_true",
-            help="Check the current fesh3 status. Shows the status of schedule files and when schedule servers were "
+            help="Check the current fesh2 status. Shows the status of schedule files and when schedule servers were "
             "last queried.",
         )
 
@@ -801,7 +801,7 @@ class Args:
             "-q",
             "--quiet",
             action="store_true",
-            help="Runs fesh3 with all terminal output suppressed. Useful when running fesh3 as a service.",
+            help="Runs fesh2 with all terminal output suppressed. Useful when running fesh2 as a service.",
         )
 
         return psr

@@ -21,7 +21,7 @@ def _pre_install():
     # If we don't have a FS directory structure, quit
 
     print("-" * 80)
-    print("Checking for a Field System installation...")
+    print("Checking for a Field System installation (required)...")
     say_goodbye = False
     for p in [
         "/usr2/fs",
@@ -37,7 +37,8 @@ def _pre_install():
         print("Can't find an installed Field System distribution. Quitting")
         sys.exit()
     else:
-        print("Field System directories found.")
+        print("Field System directories found. It looks like the Field System is installed on "
+              "this computer. Proceeding with fesh2 installation...")
     print("-" * 80)
 
 
@@ -59,12 +60,12 @@ setup(
     author_email="jejlovell@gmail.com",
     description="Geodetic VLBI schedule management and processing",
     long_description=long_description,
-    #    long_description_content_type="text/markdown",
+    long_description_content_type="text/markdown",
     packages=find_packages(),
     include_package_data=True,
     entry_points={
         "console_scripts": [
-            "fesh3=fesh3.__main__:main",
+            "fesh2=fesh2.__main__:main",
         ]
     },
 )

@@ -93,7 +93,7 @@ class Locker:
                     time.sleep(wait_time)
 
     def unlock(self):
-        """Unlock the file so other fesh3 processes can manipulate schedule files etc
+        """Unlock the file so other fesh2 processes can manipulate schedule files etc
 
         """
 

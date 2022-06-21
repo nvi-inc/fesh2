@@ -166,7 +166,7 @@ class Drudg:
         )
 
         # set the modification times of the output files to the same as the skd file
-        # that way, if a user modifies a skd or prc file, it will be noiced by fesh3
+        # that way, if a user modifies a skd or prc file, it will be noiced by fesh2
         # and a re-drudge won't be done automatically
         stinfo = os.stat(schedfile)
         modtime = stinfo.st_mtime

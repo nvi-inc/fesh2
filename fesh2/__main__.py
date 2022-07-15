@@ -39,6 +39,7 @@ from psutil import process_iter, Process
 from fesh2._version import __version__
 from fesh2.config import Args, Config
 from fesh2.drudgery import Drudg
+from fesh2.notifications import Notifications
 from fesh2.schedules.manager import (
     read_master,
     check_master,
@@ -48,7 +49,6 @@ from fesh2.schedules.manager import (
 from fesh2.tui import FeshTUI
 from fesh2.util.locker import Locker
 from fesh2.util.logging import FeshLog
-from fesh2.notifications import Notifications
 
 # from _version import __version__
 # from config import Args, Config

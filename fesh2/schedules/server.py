@@ -2,9 +2,9 @@
 import logging
 import os
 import re
+import shutil
 import sys
 import time
-import shutil
 from io import BytesIO
 from os import path
 

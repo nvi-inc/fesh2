@@ -1,8 +1,8 @@
 import errno
 import fcntl
+import logging
 import os
 import time
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -93,14 +93,11 @@ class Locker:
                     time.sleep(wait_time)
 
     def unlock(self):
-        """Unlock the file so other fesh2 processes can manipulate schedule files etc
-
-        """
+        """Unlock the file so other fesh2 processes can manipulate schedule files etc"""
 
         logger.debug("Unlocking the lock file")
         fcntl.flock(self.lock_fh, fcntl.LOCK_UN)
 
     def close(self):
-        """Close the lockfile
-        """
+        """Close the lockfile"""
         self.lock_fh.close()

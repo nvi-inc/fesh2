@@ -8,8 +8,8 @@ import time
 from datetime import datetime, timedelta
 from os import path
 
-from fesh2.schedules import server
 from fesh2.notifications import Notifications
+from fesh2.schedules import server
 
 # from schedules import server
 # from notifications import Notifications

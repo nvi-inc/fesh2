@@ -2,10 +2,11 @@
 import logging
 import os
 import re
+import shutil
 import sys
 import time
 from os import path
-import shutil
+
 import pexpect
 
 logger = logging.getLogger(__name__)

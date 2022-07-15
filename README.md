@@ -32,27 +32,23 @@ background.
 
 ## Compatibility
 
-**Fesh2** code is compatible with Python versions 3.5 and above has been 
-tested under version 3.7.3
-
-***Note that **fesh2** is not compatible with Python version 2.***
+**Fesh2** code is compatible with Python versions 3.8 and above. ***Note that **fesh2** is not compatible with 
+Python version 2.***
 
 Note that if you're 
 using an old version of Debian (Jessie or earlier) then you will need to 
-install python 3.5 or higher by hand. This could be done inside a virtual 
+install python 3.8 or higher by hand. This could be done inside a virtual 
 environment by a user or on the system as root.
 
 ## Installation
 
-**Fesh2** is distributed as part of the
-[Field System](https://github.com/nvi-inc/fs) however, it is not installed 
-as part of 
-the standard procedure and must be done as a separate step as there are some 
-dependancies that must be checked first. 
+**Fesh2** is a stand-alone add-on to the 
+[Field System](https://github.com/nvi-inc/fs) so installation must be 
+carried out separately.
 
 ### PycURL dependency
 
-Fesh2 depends on the python CURL
+**Fesh2** depends on the python CURL
 library ([PycURL](http://pycurl.io/docs/latest/index.html))
 which should be installed automatically when you install fesh2. However, PycURL
 depends on the Python development libraries, and it won't install if they're not
@@ -64,55 +60,27 @@ should do the trick. You may also need these:
 
     apt-get install libcurl4-openssl-dev libssl-dev
 
-### Fesh2 installation
-
 Please make sure the above dependencies are satisfied before proceeding.
 
-Assumes that python libraries and executables will be kept in /usr2/fs/python
+Installation should be carried out under the `prog` account. You may wish to 
+install fesh2 within a python virtual environment, but regardless, the 
+installation commands are the same:
 
-IF so: 
-* PYTHONPATH needs setting up as follows
-    `export PYTHONPATH=$PYTHONPATH:/usr2/fs/python`
-* and /usr2/fs/python/bin needs adding to the PATH.
-     `export PATH=$PATH:/usr2/fs/python/bin`
-  or get `make` to create a symlink from `/usr2/fs/bin`?
-* Running `make fesh2` will execute this:
-      python setup.py install --home=/usr2/fs/python
-* but the installation location could be elsewhere.
-
-
-
-Installation should be carried out under the
-`prog` account. You may wish to install fesh2 within a python virtual 
-environment, but regardless, the installation commands are the same:
-
-Fesh2 is distributed as part of the Field System and can be found in 
-   '/usr2/fs/fesh2'. There are two installation options. 
-#### Installing from the distributed code:
-Run the following:
-   ```
-   cd /usr2/fs/fesh2
-   python3 setup.py install
-   ```
 #### Installing with pip:
 Run the following:
    ```
-   cd /usr2/fs/fesh2
-   pip3 install -v --upgrade  dist/fesh2-2.3.0.tar.gz
-   ```
+pip install fesh2   
+```
 
 Watch out for WARNING messages. In some Field System setups it may not be 
-possible for the prog account to write to the /usr2/control directior, in 
+possible for the prog account to write to the `/usr2/control` directory, in 
 which case the default configuration file needs copying there manually. A 
 warning message is issued if this is the case. 
 
-You will then need to edit the **fesh2** configuration file for your station
-(s). More information on configuration is provided below.
+You will then need to edit the **fesh2** configuration file for your station(s). More information on configuration is provided below.
 
-A template configuration file is provided in fs/st.default/fesh2.config. 
-This should be placed in /usr2/control and edited to suit your site.
-
-
+A template configuration file is provided in `fs/st.default/fesh2.config`. 
+This should be placed in `/usr2/control` and edited to suit your site.
 
 ## Configuration
 

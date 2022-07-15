@@ -8,6 +8,7 @@ from configparser import ConfigParser, ExtendedInterpolation
 from datetime import datetime
 from os import path
 from typing import Union
+
 import configargparse
 
 logger = logging.getLogger(__name__)
@@ -228,9 +229,7 @@ class Config:
         self.update = args.update
 
     def check_config(self):
-        """Makes checks of configuration parameters and will raise an exception if there's a problem
-
-        """
+        """Makes checks of configuration parameters and will raise an exception if there's a problem"""
         # Check the configuration
 
         # Servers
@@ -337,7 +336,9 @@ class Config:
             for email in iterable:
                 if not email_syntax_ok(email):
                     raise RuntimeError(
-                        'Invalid email recipient address: "{}" from "{}"'.format(email, self.EmailRecipients)
+                        'Invalid email recipient address: "{}" from "{}"'.format(
+                            email, self.EmailRecipients
+                        )
                     )
 
     def _get_arg_from_extra_args(self, extra_args: list, parameter_name: str):

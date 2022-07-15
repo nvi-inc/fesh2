@@ -1,13 +1,13 @@
 import logging
+import socket
 from email.message import EmailMessage
-from textwrap import fill
-from typing import Union, List
-from smtplib import SMTP, SMTPConnectError, SMTPAuthenticationError
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from smtplib import SMTP, SMTPConnectError, SMTPAuthenticationError
+from textwrap import fill
+from typing import Union, List
 
 import numpy as np
-import socket
 
 logger = logging.getLogger(__name__)
 
@@ -112,7 +112,9 @@ class Notifications:
                 server.send_message(msg)
             except SMTPAuthenticationError as e:
                 logger.warning(
-                    "Could not send email: the username and/or password is incorrect".format(e)
+                    "Could not send email: the username and/or password is incorrect".format(
+                        e
+                    )
                 )
                 it_worked = False
             except Exception as e:
